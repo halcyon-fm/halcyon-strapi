@@ -809,6 +809,7 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
       'manyToMany',
       'api::song.song'
     >;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -885,6 +886,7 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
       'manyToMany',
       'api::song.song'
     >;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -969,6 +971,7 @@ export interface ApiEpEp extends Schema.CollectionType {
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
     songs: Attribute.Relation<'api::ep.ep', 'manyToMany', 'api::song.song'>;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1000,6 +1003,7 @@ export interface ApiSingleSingle extends Schema.CollectionType {
       'manyToMany',
       'api::song.song'
     >;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

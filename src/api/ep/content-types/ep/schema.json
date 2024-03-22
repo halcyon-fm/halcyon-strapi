@@ -35,6 +35,10 @@
       "relation": "manyToMany",
       "target": "api::song.song",
       "mappedBy": "eps"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }
