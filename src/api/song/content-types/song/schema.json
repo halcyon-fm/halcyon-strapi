@@ -21,6 +21,30 @@
       "relation": "manyToMany",
       "target": "api::artist.artist",
       "inversedBy": "songs"
+    },
+    "singles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::single.single",
+      "inversedBy": "songs"
+    },
+    "eps": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::ep.ep",
+      "inversedBy": "songs"
+    },
+    "albums": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::album.album",
+      "inversedBy": "songs"
+    },
+    "compilations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::compilation.compilation",
+      "inversedBy": "songs"
     }
   }
 }

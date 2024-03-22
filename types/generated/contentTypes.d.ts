@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -741,53 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiAlbumAlbum extends Schema.CollectionType {
   collectionName: 'albums';
   info: {
@@ -804,6 +804,11 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
+    songs: Attribute.Relation<
+      'api::album.album',
+      'manyToMany',
+      'api::song.song'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -875,6 +880,11 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
+    songs: Attribute.Relation<
+      'api::compilation.compilation',
+      'manyToMany',
+      'api::song.song'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -958,6 +968,7 @@ export interface ApiEpEp extends Schema.CollectionType {
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
+    songs: Attribute.Relation<'api::ep.ep', 'manyToMany', 'api::song.song'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -984,6 +995,11 @@ export interface ApiSingleSingle extends Schema.CollectionType {
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
+    songs: Attribute.Relation<
+      'api::single.single',
+      'manyToMany',
+      'api::song.song'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1020,6 +1036,22 @@ export interface ApiSongSong extends Schema.CollectionType {
       'manyToMany',
       'api::artist.artist'
     >;
+    singles: Attribute.Relation<
+      'api::song.song',
+      'manyToMany',
+      'api::single.single'
+    >;
+    eps: Attribute.Relation<'api::song.song', 'manyToMany', 'api::ep.ep'>;
+    albums: Attribute.Relation<
+      'api::song.song',
+      'manyToMany',
+      'api::album.album'
+    >;
+    compilations: Attribute.Relation<
+      'api::song.song',
+      'manyToMany',
+      'api::compilation.compilation'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1044,10 +1076,10 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'api::album.album': ApiAlbumAlbum;
       'api::artist.artist': ApiArtistArtist;
       'api::compilation.compilation': ApiCompilationCompilation;

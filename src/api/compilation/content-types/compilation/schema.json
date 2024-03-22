@@ -28,6 +28,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::song.song",
+      "mappedBy": "compilations"
     }
   }
 }
