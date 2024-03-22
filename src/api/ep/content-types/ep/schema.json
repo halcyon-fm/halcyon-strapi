@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eps",
+  "info": {
+    "singularName": "ep",
+    "pluralName": "eps",
+    "displayName": "EP"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "release_date": {
+      "type": "date"
+    },
+    "fanlink": {
+      "type": "string"
+    },
+    "cover_art": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
