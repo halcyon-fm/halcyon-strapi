@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_all_social_media_links",
+  "info": {
+    "displayName": "Social Media Links",
+    "icon": "thumbUp"
+  },
+  "options": {},
+  "attributes": {
+    "Platform": {
+      "type": "enumeration",
+      "enum": [
+        "facebook",
+        "twitter",
+        "instagram",
+        "spotify"
+      ]
+    },
+    "URL": {
+      "type": "string"
+    }
+  }
+}

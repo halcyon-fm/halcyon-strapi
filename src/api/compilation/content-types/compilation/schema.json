@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "eps",
+  "collectionName": "compilations",
   "info": {
-    "singularName": "ep",
-    "pluralName": "eps",
-    "displayName": "EP",
+    "singularName": "compilation",
+    "pluralName": "compilations",
+    "displayName": "Compilation",
     "description": ""
   },
   "options": {
@@ -13,8 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "release_date": {
       "type": "date"

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "eps",
+  "collectionName": "albums",
   "info": {
-    "singularName": "ep",
-    "pluralName": "eps",
-    "displayName": "EP",
+    "singularName": "album",
+    "pluralName": "albums",
+    "displayName": "Album",
     "description": ""
   },
   "options": {
