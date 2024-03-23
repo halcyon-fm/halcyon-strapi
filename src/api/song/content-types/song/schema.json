@@ -14,7 +14,9 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true,
+      "private": true
     },
     "artists": {
       "type": "relation",
@@ -45,6 +47,10 @@
       "relation": "manyToMany",
       "target": "api::compilation.compilation",
       "inversedBy": "songs"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }

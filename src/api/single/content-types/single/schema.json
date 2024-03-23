@@ -14,7 +14,9 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true,
+      "private": true
     },
     "release_date": {
       "type": "date"
@@ -39,6 +41,11 @@
     "title": {
       "type": "string",
       "required": true
+    },
+    "artist": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist"
     }
   }
 }

@@ -13,7 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "private": true
     },
     "release_date": {
       "type": "date"
@@ -38,6 +41,11 @@
     "title": {
       "type": "string",
       "required": true
+    },
+    "primary_artist": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::artist.artist"
     }
   }
 }

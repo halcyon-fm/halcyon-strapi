@@ -800,7 +800,10 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -810,6 +813,11 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
       'api::song.song'
     >;
     title: Attribute.String & Attribute.Required;
+    primary_artist: Attribute.Relation<
+      'api::album.album',
+      'oneToOne',
+      'api::artist.artist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -840,7 +848,7 @@ export interface ApiArtistArtist extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     social_media_links: Attribute.Component<'all.social-media-links', true>;
     songs: Attribute.Relation<
       'api::artist.artist',
@@ -877,7 +885,10 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -887,6 +898,11 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
       'api::song.song'
     >;
     title: Attribute.String & Attribute.Required;
+    primary_artist: Attribute.Relation<
+      'api::compilation.compilation',
+      'oneToOne',
+      'api::artist.artist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -966,12 +982,20 @@ export interface ApiEpEp extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
     songs: Attribute.Relation<'api::ep.ep', 'manyToMany', 'api::song.song'>;
     title: Attribute.String & Attribute.Required;
+    primary_artist: Attribute.Relation<
+      'api::ep.ep',
+      'oneToOne',
+      'api::artist.artist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -994,7 +1018,10 @@ export interface ApiSingleSingle extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -1004,6 +1031,11 @@ export interface ApiSingleSingle extends Schema.CollectionType {
       'api::song.song'
     >;
     title: Attribute.String & Attribute.Required;
+    artist: Attribute.Relation<
+      'api::single.single',
+      'oneToOne',
+      'api::artist.artist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1034,7 +1066,10 @@ export interface ApiSongSong extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Private &
+      Attribute.Unique;
     artists: Attribute.Relation<
       'api::song.song',
       'manyToMany',
@@ -1056,6 +1091,7 @@ export interface ApiSongSong extends Schema.CollectionType {
       'manyToMany',
       'api::compilation.compilation'
     >;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
