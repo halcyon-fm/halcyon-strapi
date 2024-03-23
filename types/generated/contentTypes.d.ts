@@ -813,11 +813,6 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
       'api::song.song'
     >;
     title: Attribute.String & Attribute.Required;
-    primary_artist: Attribute.Relation<
-      'api::album.album',
-      'oneToOne',
-      'api::artist.artist'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -898,11 +893,6 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
       'api::song.song'
     >;
     title: Attribute.String & Attribute.Required;
-    primary_artist: Attribute.Relation<
-      'api::compilation.compilation',
-      'oneToOne',
-      'api::artist.artist'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -991,11 +981,6 @@ export interface ApiEpEp extends Schema.CollectionType {
     cover_art: Attribute.Media;
     songs: Attribute.Relation<'api::ep.ep', 'manyToMany', 'api::song.song'>;
     title: Attribute.String & Attribute.Required;
-    primary_artist: Attribute.Relation<
-      'api::ep.ep',
-      'oneToOne',
-      'api::artist.artist'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1031,11 +1016,6 @@ export interface ApiSingleSingle extends Schema.CollectionType {
       'api::song.song'
     >;
     title: Attribute.String & Attribute.Required;
-    artist: Attribute.Relation<
-      'api::single.single',
-      'oneToOne',
-      'api::artist.artist'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
