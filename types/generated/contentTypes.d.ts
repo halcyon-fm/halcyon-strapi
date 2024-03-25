@@ -800,10 +800,7 @@ export interface ApiAlbumAlbum extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.Private &
-      Attribute.Unique;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -880,10 +877,7 @@ export interface ApiCompilationCompilation extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.Private &
-      Attribute.Unique;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -972,10 +966,7 @@ export interface ApiEpEp extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.Private &
-      Attribute.Unique;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
@@ -1003,10 +994,7 @@ export interface ApiSingleSingle extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.Private &
-      Attribute.Unique;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     release_date: Attribute.Date;
     fanlink: Attribute.String;
     cover_art: Attribute.Media;
